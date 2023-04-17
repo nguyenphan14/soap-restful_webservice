@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Payment } from './entities/payment.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CalcFeeDto } from './dto/calc-fee.dto';
 
 @Injectable()
 export class PaymentService {
@@ -22,9 +23,12 @@ export class PaymentService {
     await this.paymentRepository.delete(id);
   }
 
-  async calcFee(dto: any): Promise<any> {
+  async calcFee(dto: CalcFeeDto): Promise<any> {
     const user = await this.paymentRepository.findOneBy({
       card_number: dto?.card_number,
+      customer_name: dto.customer_name,
+      card_type: dto.card_type,
+      cvc: dto.cvc,
     });
 
     if (user) {

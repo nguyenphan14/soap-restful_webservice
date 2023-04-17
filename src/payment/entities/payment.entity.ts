@@ -11,8 +11,8 @@ export class Payment {
   @Column()
   card_type: string;
 
-  @Column({ default: true })
-  card_number: boolean;
+  @Column()
+  card_number: string;
 
   @Column({})
   cvc: number;

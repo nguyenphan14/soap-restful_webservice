@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { PaymentModule } from './payment/payment.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Payment } from './payment/entities/payment.entity';
+import { OrderModule } from './order/order.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { Payment } from './payment/entities/payment.entity';
       synchronize: true,
     }),
     PaymentModule,
+    OrderModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
