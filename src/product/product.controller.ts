@@ -7,9 +7,11 @@ export class ProductController {
   constructor(private readonly productService: ProductService) { }
 
   @Get(':id/quantity')
-  async checkQuantity(@Param('id') id: string,
-    @Query('quantity') quantity: Number): Promise<number> {
-    const quantity = await this.productService.checkQuantity(id, quantity)
-    return null;
+  async checkQuantity(
+    @Param('id') id: string,
+    @Query('quantity') quantity: number,
+  ): Promise<number> {
+    const quantityRes = await this.productService.checkQuantity(id, quantity);
+    return quantityRes;
   }
 }
