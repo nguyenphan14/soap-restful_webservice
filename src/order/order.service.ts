@@ -9,7 +9,7 @@ export class OrderService {
   constructor(
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
-  ) { }
+  ) {}
 
   async checkStatus(orderNumber: string, companyId: string): Promise<string> {
     const order = await this.orderRepository.findOne({

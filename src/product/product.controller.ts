@@ -6,7 +6,7 @@ import { Product } from './entities/product.entity';
 export class ProductController {
   constructor(private readonly productService: ProductService) { }
 
-  @Get(':id/quantity')
+  @Get(':id')
   async checkQuantity(
     @Param('id') id: string,
     @Query('quantity') quantity: number,
