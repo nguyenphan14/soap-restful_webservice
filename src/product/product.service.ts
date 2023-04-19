@@ -13,7 +13,6 @@ export class ProductService {
     const product = await this.productRepository.findOne({
       where: {
         id: Number(id),
-        quantity: quantity,
       },
     });
 
