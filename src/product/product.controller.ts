@@ -10,7 +10,7 @@ export class ProductController {
   async checkQuantity(
     @Param('id') id: string,
     @Query('quantity') quantity: number,
-  ): Promise<number> {
+  ): Promise<string> {
     const quantityRes = await this.productService.checkQuantity(id, quantity);
     return quantityRes;
   }

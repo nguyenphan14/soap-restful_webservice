@@ -16,4 +16,7 @@ export class Product {
 
   @Column()
   quantity: number;
+
+  @Column({ type: String })
+  status: string;
 }
