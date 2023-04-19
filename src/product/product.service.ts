@@ -9,7 +9,7 @@ export class ProductService {
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
   ) { }
-  async checkQuantity(id: string, quantity: number): Promise<string> {
+  async checkQuantity(id: string, quantity: number): Promise<boolean> {
     const product = await this.productRepository.findOne({
       where: {
         id: Number(id),
@@ -21,6 +21,6 @@ export class ProductService {
       throw new HttpException('Product not found!', HttpStatus.NOT_FOUND);
     }
 
-    return product.status;
+    return product.quantity - quantity >= 0;
   }
 }
