@@ -24,27 +24,19 @@ export class PaymentService {
   }
 
   async calcFee(dto: CalcFeeDto): Promise<number> {
-    const user = await this.paymentRepository.findOneBy({
-      card_number: dto?.card_number,
-      customer_name: dto.customer_name,
-      card_type: dto.card_type,
-      cvc: dto.cvc,
-    });
+    const user = new Payment();
 
-    if (user) {
-      const { amount } = dto;
-      let fee = amount * 10;
-      if (amount < 10) {
-        fee = 100;
-      }
-      user.fee = fee;
-      await this.paymentRepository.save({
-        id: user.id,
-        fee: fee,
-      });
-      return fee;
-    } else {
-      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    Object.assign(user, dto);
+    user.customer_name = dto.customer_name;
+    console.log(user);
+
+    const { amount } = dto;
+    let fee = amount * 10;
+    if (amount < 10) {
+      fee = 100;
     }
+    user.fee = fee;
+    await user.save();
+    return fee;
   }
 }

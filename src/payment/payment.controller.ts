@@ -12,7 +12,7 @@ export class PaymentController {
     return payments;
   }
 
-  @Post('/calc_fee')
+  @Post('/fee')
   async calculateFee(@Body() dto: CalcFeeDto): Promise<any> {
     const fee: number = await this.paymentService.calcFee(dto);
     return fee;
