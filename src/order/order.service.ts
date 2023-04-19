@@ -9,7 +9,7 @@ export class OrderService {
   constructor(
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
-  ) {}
+  ) { }
 
   async checkStatus(orderNumber: string, companyId: string): Promise<string> {
     const order = await this.orderRepository.findOne({
@@ -27,6 +27,8 @@ export class OrderService {
   }
 
   async createOrder(dto: CreateOrderDto): Promise<Order> {
-    return await this.orderRepository.create(dto);
+    const newOrder = new Order();
+    Object.assign(newOrder, dto);
+    return await newOrder.save();
   }
 }
