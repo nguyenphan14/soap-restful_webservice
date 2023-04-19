@@ -14,15 +14,15 @@ export class Payment {
   @Column()
   card_number: string;
 
-  @Column({})
-  cvc: number;
+  @Column()
+  cvc: string;
 
-  @Column({})
+  @Column()
   expiration_date: string;
 
-  @Column({})
+  @Column()
   amount: number;
 
-  @Column({})
+  @Column()
   fee: number;
 }

@@ -37,9 +37,14 @@ export class PaymentService {
       if (amount < 10) {
         fee = 100;
       }
+      user.fee = fee;
+      await this.paymentRepository.save({
+        id: user.id,
+        fee: fee,
+      });
       return fee;
     } else {
-      throw new HttpException('User not found', HttpStatus.NOT_FOUND)
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
   }
 }

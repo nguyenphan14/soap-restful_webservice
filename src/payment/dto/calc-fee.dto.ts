@@ -10,8 +10,8 @@ export class CalcFeeDto {
   @IsString()
   card_number: string;
 
-  @IsNumber()
-  cvc: number;
+  @IsString()
+  cvc: string;
 
   @IsString()
   expiration_date: string;
