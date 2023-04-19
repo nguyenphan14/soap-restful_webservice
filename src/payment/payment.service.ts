@@ -23,7 +23,7 @@ export class PaymentService {
     await this.paymentRepository.delete(id);
   }
 
-  async calcFee(dto: CalcFeeDto): Promise<any> {
+  async calcFee(dto: CalcFeeDto): Promise<number> {
     const user = await this.paymentRepository.findOneBy({
       card_number: dto?.card_number,
       customer_name: dto.customer_name,

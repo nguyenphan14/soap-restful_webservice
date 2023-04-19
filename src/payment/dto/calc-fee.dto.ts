@@ -18,7 +18,4 @@ export class CalcFeeDto {
 
   @IsNumber()
   amount: number;
-
-  @IsNumber()
-  fee: number;
 }
