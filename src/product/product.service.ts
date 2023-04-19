@@ -12,7 +12,7 @@ export class ProductService {
   async checkQuantity(id: string, quantity: number): Promise<boolean> {
     const product = await this.productRepository.findOne({
       where: {
-        id: Number(id),
+        productId: id,
       },
     });
 
